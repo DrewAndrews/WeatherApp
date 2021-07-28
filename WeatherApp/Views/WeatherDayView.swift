@@ -14,7 +14,7 @@ struct WeatherDayView: View {
     var body: some View {
         VStack {
             Text(String(day.date))
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 13, weight: .medium))
                 .foregroundColor(.white)
             Image(systemName: day.imageName)
                 .renderingMode(.template)
@@ -22,7 +22,7 @@ struct WeatherDayView: View {
                 .foregroundColor(.white)
                 .accentColor(.green)
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 40, height: 40)
+                .frame(width: 35, height: 35)
             Text("\(Int(day.temp))°")
                 .font(.title2)
                 .foregroundColor(.white)

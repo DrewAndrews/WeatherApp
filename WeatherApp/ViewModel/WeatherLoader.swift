@@ -39,4 +39,13 @@ final class WeatherLoader: ObservableObject {
             task.resume()
         }
     }
+    
+    static func prepareTimes(for timeIntervalInUTC: Double) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        let date = Date(timeIntervalSince1970: timeIntervalInUTC)
+        
+        return dateFormatter.string(from: date)
+    }
 }

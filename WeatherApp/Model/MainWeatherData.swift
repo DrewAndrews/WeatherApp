@@ -15,6 +15,8 @@ struct MainWeatherData: Decodable {
     var feels_like: Double = 1
     var humidity: Double = 1
     var weather: [Weather] = [Weather(main: "Cloud", description: "So cloudy")]
+    var detailsForDay: [String: Double] = [:]
+    private(set) var detailsForDayKeys = ["SUNRISE", "SUNSET", "FEELS LIKE", "HUMIDITY"]
     var imageName: String {
         switch weather[0].main {
         case "Thunderstorm":
@@ -54,7 +56,8 @@ struct MainWeatherData: Decodable {
         temp = 1
         feels_like = 1
         humidity = 1
-        weather = [Weather(main: "Clouds", description: "Cloud with rain")]
+        weather = [Weather(main: "______", description: "_________")]
+        detailsForDay = ["SUNRISE": Double(sunrise), "SUNSET": Double(sunset), "FEELS LIKE": feels_like, "HUMIDITY": humidity]
     }
     
     init(from decoder: Decoder) throws {
@@ -67,6 +70,7 @@ struct MainWeatherData: Decodable {
                 self.feels_like = try currentWeatherContainer.decode(Double.self, forKey: .feels_like)
                 self.humidity = try currentWeatherContainer.decode(Double.self, forKey: .humidity)
                 self.weather = try currentWeatherContainer.decode([Weather].self, forKey: .weather)
+                self.detailsForDay = ["SUNRISE": Double(self.sunrise), "SUNSET": Double(self.sunset), "FEELS LIKE": self.feels_like, "HUMIDITY": self.humidity]
             }
         }
     }

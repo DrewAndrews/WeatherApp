@@ -16,25 +16,25 @@ struct ContentView: View {
         ZStack {
             BackgroundView(isNight: $isNight)
             VStack {
-                CityTextView(cityName: weatherLoader.mainWeather.cityName)
                 MainWeatherStatusView(mainWeather: weatherLoader.mainWeather)
                 
-                Spacer()
+                 CustomDivider()
                 
-                HStack(spacing: 20) {
+                HStack {
                     ForEach(weatherLoader.weekDays.daily) { day in
                         WeatherDayView(day: day)
                     }
                 }
-                Spacer()
                 
-                Button {
-                    isNight.toggle()
-                } label: {
-                    WeatherButton(title: "Change Day Time",
-                                  textColor: .blue,
-                                  backgroundColor: .white)
+                CustomDivider()
+                
+                ForEach(weatherLoader.mainWeather.detailsForDayKeys, id: \.self) { key in
+                    DetailDayView(description: key, value: weatherLoader.mainWeather.detailsForDay[key]!)
+                    CustomDivider()
+                        .padding(.horizontal)
                 }
+                
+                Spacer()
             }
         }
         .onAppear {

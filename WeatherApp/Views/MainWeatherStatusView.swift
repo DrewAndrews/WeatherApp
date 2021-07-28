@@ -12,7 +12,16 @@ struct MainWeatherStatusView: View {
     var mainWeather: MainWeatherData
     
     var body: some View {
-        VStack(spacing: 8) {
+        VStack {
+            Text(mainWeather.cityName)
+                .font(.title)
+                .fontWeight(.medium)
+                .foregroundColor(.white)
+                .padding(.top)
+            Text(mainWeather.weather[0].description.capitalized)
+                .font(.title3)
+                .fontWeight(.medium)
+                .foregroundColor(.white)
             Image(systemName: mainWeather.imageName)
                 .renderingMode(.template)
                 .resizable()
@@ -24,5 +33,11 @@ struct MainWeatherStatusView: View {
                 .fontWeight(.medium)
                 .foregroundColor(.white)
         }
+    }
+}
+
+struct MainWeatherStatusView_Preview: PreviewProvider {
+    static var previews: some View {
+        MainWeatherStatusView(mainWeather: MainWeatherData())
     }
 }
