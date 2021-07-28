@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var isNight = false
+    
     @StateObject var weatherLoader = WeatherLoader()
     
     var body: some View {

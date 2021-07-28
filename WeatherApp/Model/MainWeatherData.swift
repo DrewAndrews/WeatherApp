@@ -8,7 +8,7 @@
 import Foundation
 
 struct MainWeatherData: Decodable {
-    var cityName: String = "London"
+    var cityName: String = "________"
     var sunrise: Int = 1
     var sunset: Int = 1
     var temp: Double = 1
@@ -63,7 +63,7 @@ struct MainWeatherData: Decodable {
     init(from decoder: Decoder) throws {
         if let weatherContainer = try? decoder.container(keyedBy: WeatherKeys.self) {
             if let currentWeatherContainer = try? weatherContainer.nestedContainer(keyedBy: CurrentWeatherKeys.self, forKey: .current) {
-                self.cityName = "Blagoveshensk"
+                self.cityName = "________"
                 self.sunrise = try currentWeatherContainer.decode(Int.self, forKey: .sunrise)
                 self.sunset = try currentWeatherContainer.decode(Int.self, forKey: .sunset)
                 self.temp = try currentWeatherContainer.decode(Double.self, forKey: .temp)
