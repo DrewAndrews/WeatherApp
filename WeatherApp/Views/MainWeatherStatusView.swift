@@ -27,7 +27,7 @@ struct MainWeatherStatusView: View {
                 .resizable()
                 .foregroundColor(.white)
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 180, height: 180)
+                .frame(width: Configuration.mainWeatherPictureSize, height: Configuration.mainWeatherPictureSize)
             Text("\(Int(mainWeather.temp))°")
                 .font(.title)
                 .fontWeight(.medium)

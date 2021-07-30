@@ -2,4 +2,4 @@
 
 Get current weather and weekly weather forecast!
 
-![WeatherApp screenshot!](screen.png)
+<img src="WeatherApp/Assets.xcassets/weatherAppScreen.imageset/screen.png" width="300" height="600">
